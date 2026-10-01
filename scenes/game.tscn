@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://k6xcnl2xawxk"]
+
+[ext_resource type="Script" uid="uid://duflwxnlg70nk" path="res://scenes/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://c7gg0l3xs2260" path="res://scenes/flappy_bird.tscn" id="2_lnu2h"]
+
+[sub_resource type="Animation" id="Animation_ig7tw"]
+resource_name = "player_death"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlappyBird")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"freezeAndStare"
+}, {
+"args": [],
+"method": &"dropToOutside"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"goToMainMenu"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_30bps"]
+_data = {
+&"player_death": SubResource("Animation_ig7tw")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqjtg"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdt6w"]
+font_size = 43
+
+[node name="Game" type="Node2D" unique_id=397450130]
+script = ExtResource("1_yqjtg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1181716253]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_30bps")
+
+[node name="FlappyBird" parent="." unique_id=501726539 instance=ExtResource("2_lnu2h")]
+unique_name_in_owner = true
+position = Vector2(199, 298)
+
+[node name="UI" type="Control" parent="." unique_id=1194460084]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 821.0
+offset_bottom = 243.0
+
+[node name="PipeCounter" type="Label" parent="UI" unique_id=2010526984]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -50.0
+offset_bottom = 23.0
+grow_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-60, 60)
+text = "Pipes: 0"
+label_settings = SubResource("LabelSettings_yqjtg")
+
+[node name="Prompt" type="Label" parent="UI" unique_id=2005126409]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 95.0
+offset_top = 64.0
+offset_right = 541.0
+offset_bottom = 123.0
+text = "Press any key to start"
+label_settings = SubResource("LabelSettings_vdt6w")

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dlj7j2vkfwcu4"]
+
+[ext_resource type="Script" uid="uid://d14ip4dme5wi5" path="res://scenes/pipe.gd" id="1_arpqm"]
+[ext_resource type="Texture2D" uid="uid://ch4q1dsb0csya" path="res://assets/wall_solid.png" id="3_ejsh2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdt6w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vdt6w"]
+texture = ExtResource("3_ejsh2")
+texture_margin_left = 32.0
+texture_margin_top = 32.0
+texture_margin_right = 32.0
+texture_margin_bottom = 32.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Pipe" type="Node2D" unique_id=1347424486]
+script = ExtResource("1_arpqm")
+
+[node name="UpperArea" type="Area2D" parent="." unique_id=1433619507]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 4
+
+[node name="UpperRenderOld" type="NinePatchRect" parent="UpperArea" unique_id=663984893]
+visible = false
+texture_filter = 1
+offset_right = 105.0
+offset_bottom = 87.0
+texture = ExtResource("3_ejsh2")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="UpperCollision" type="CollisionShape2D" parent="UpperArea" unique_id=350652068]
+unique_name_in_owner = true
+position = Vector2(10, 11)
+shape = SubResource("RectangleShape2D_vdt6w")
+
+[node name="UpperRender" type="Panel" parent="UpperArea" unique_id=389788873]
+unique_name_in_owner = true
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vdt6w")
+
+[node name="LowerArea" type="Area2D" parent="." unique_id=128737307]
+unique_name_in_owner = true
+collision_layer = 8
+collision_mask = 4
+
+[node name="LowerRenderOld" type="NinePatchRect" parent="LowerArea" unique_id=365525334]
+visible = false
+texture_filter = 1
+offset_right = 105.0
+offset_bottom = 87.0
+texture = ExtResource("3_ejsh2")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="LowerCollision" type="CollisionShape2D" parent="LowerArea" unique_id=1803592555]
+unique_name_in_owner = true
+position = Vector2(71, 53)
+shape = SubResource("RectangleShape2D_vdt6w")
+
+[node name="LowerRender" type="Panel" parent="LowerArea" unique_id=1692106021]
+unique_name_in_owner = true
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_vdt6w")

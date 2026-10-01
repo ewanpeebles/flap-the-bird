@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://b83ss0qw35hn5"]
+
+[ext_resource type="Script" uid="uid://cp3xrq4731hae" path="res://scenes/menu.gd" id="1_con2f"]
+[ext_resource type="Texture2D" uid="uid://dear2glhngkti" path="res://assets/menu_nineslice_basic.png" id="1_vjb58"]
+[ext_resource type="Theme" uid="uid://dkulvvy4ay2g1" path="res://themes/default.theme" id="2_con2f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vdt6w"]
+texture = ExtResource("1_vjb58")
+texture_margin_left = 36.0
+texture_margin_top = 36.0
+texture_margin_right = 36.0
+texture_margin_bottom = 36.0
+
+[sub_resource type="SystemFont" id="SystemFont_2svoa"]
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdt6w"]
+font = SubResource("SystemFont_2svoa")
+font_size = 36
+
+[node name="Control" type="Control" unique_id=1836194752]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_con2f")
+
+[node name="Panel" type="Panel" parent="." unique_id=176308466]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -367.0
+offset_top = -238.0
+offset_right = 367.0
+offset_bottom = 238.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vdt6w")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1436381732]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -87.0
+offset_right = 20.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Flap the Bird Lite"
+label_settings = SubResource("LabelSettings_vdt6w")
+
+[node name="Play" type="Button" parent="Panel" unique_id=95156825]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 33.5
+offset_right = 108.0
+offset_bottom = 110.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_con2f")
+text = "Play!"
+
+[node name="Quit" type="Button" parent="Panel" unique_id=1269985853]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 125.0
+offset_right = 108.0
+offset_bottom = 202.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_con2f")
+text = "Quit
+"
+
+[node name="HighScoreLabel" type="Label" parent="Panel" unique_id=2143365731]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Score: 0"
+
+[connection signal="pressed" from="Panel/Play" to="." method="playPressed"]
+[connection signal="pressed" from="Panel/Quit" to="." method="quitPressed"]
