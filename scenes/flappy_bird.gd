@@ -8,6 +8,8 @@ var animSprite: AnimatedSprite2D
 
 var hasGravity = false
 var update = false
+var celebrating = false
+var celebTime = 0.0
 
 func begin():
 	update = true
@@ -16,6 +18,11 @@ func begin():
 
 func goToIdle():
 	animSprite.play("idle")
+
+func celebrate():
+	celebrating = true
+	celebTime = 1.0
+	animSprite.play("celebrate")
 
 func freezeAndStare():
 	update = false
@@ -35,6 +42,7 @@ func _ready() -> void:
 	animSprite.animation_finished.connect(goToIdle)
 
 	EventBus.inGame_playerStart.connect(begin)
+	EventBus.inGame_newBest.connect(celebrate)
 
 
 func _physics_process(delta: float) -> void:
@@ -46,7 +54,10 @@ func _physics_process(delta: float) -> void:
 		# Handle jump.
 		if Input.is_action_just_pressed("jump"):
 			velocity.y = JUMP_VELOCITY
-			animSprite.play("flap")
+			if not celebrating:
+				animSprite.play("flap")
+		if celebrating:
+			celebTime = clampf(celebTime - delta, 0, 1)
 			
 
 		# Ensure in-bounds

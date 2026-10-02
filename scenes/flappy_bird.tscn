@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://cwrarlrsihl2n" path="res://assets/flappy_bird_sheet.png" id="1_f50pn"]
 [ext_resource type="Script" uid="uid://ubim5cdq6gtv" path="res://scenes/flappy_bird.gd" id="1_nj5km"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sjlk"]
+atlas = ExtResource("1_f50pn")
+region = Rect2(64, 0, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ij6vw"]
 atlas = ExtResource("1_f50pn")
 region = Rect2(48, 0, 16, 16)
@@ -23,12 +27,16 @@ region = Rect2(16, 0, 16, 16)
 atlas = ExtResource("1_f50pn")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4sjlk"]
-atlas = ExtResource("1_f50pn")
-region = Rect2(64, 0, 16, 16)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_vdt6w"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sjlk")
+}],
+"loop": 0,
+"name": &"celebrate",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ij6vw")
@@ -58,14 +66,6 @@ animations = [{
 "loop": 1,
 "name": &"idle",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4sjlk")
-}],
-"loop": 1,
-"name": &"win",
-"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdt6w"]
@@ -82,7 +82,7 @@ texture_filter = 1
 position = Vector2(-5, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_vdt6w")
-animation = &"flap"
+animation = &"die"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1736812925]
 shape = SubResource("RectangleShape2D_vdt6w")

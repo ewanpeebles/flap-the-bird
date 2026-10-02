@@ -9,6 +9,7 @@ const SCREEN_EDGE_SAFE_BUFFER = 30
 
 var update = false
 var atStart = true
+var newBestYet = false
 
 # Children
 var flappyBird: CharacterBody2D
@@ -59,6 +60,9 @@ func newPipe(gapPos: Vector2, flappyPos: Vector2):
 func pipePass():
 	pipeCount += 1
 	pipeCounter.text = "Pipes: " + str(pipeCount)
+	if pipeCount > Globals.highScore and not newBestYet:
+		newBestYet = true
+		EventBus.inGame_newBest.emit()
 	# pipeCounter.set_position()
 
 # Called when the node enters the scene tree for the first time.

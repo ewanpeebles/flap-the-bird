@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Flap the Bird Lite"
 config/description="The game you play when you want microtransactions"
-config/version="1.0.0"
+config/version="1.1.1"
 run/main_scene="uid://bvpnynt0wo3dj"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/image="uid://bl0jtnnkap4a0"

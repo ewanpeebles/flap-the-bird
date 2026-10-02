@@ -6,6 +6,7 @@ signal mainMenu_quit
 signal inGame_playerStart
 signal inGame_flappyBirdDied
 signal inGame_flappyPassedPipe
+signal inGame_newBest
 signal inGame_goToMainMenu
 
 signal universal_triggerSave
